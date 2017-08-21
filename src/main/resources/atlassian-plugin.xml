@@ -18,20 +18,25 @@
     <resource type="download" name="images/" location="/images"/>
     <context>worktime</context>
   </web-resource>
-
   <issue-tabpanel key="worktime-tab-panel" name="Worktime Tab Panel" i18n-name-key="worktime-tab-panel.name" class="com.businesshelpers.worktime.jira.tabpanels.WorktimeTabPanel">
     <description key="worktime-tab-panel.description">The Worktime Tab Panel Plugin</description>
-    <label key="worktime-tab-panel.label"></label>
+    <label key="worktime-tab-panel.label"/>
     <order>10</order>
     <resource type="velocity" name="view" location="templates/tabpanels/worktime-tab-panel.vm"/>
     <supports-ajax-load>true</supports-ajax-load>
   </issue-tabpanel>
-
-  <component key="WorktimeService" name="Worktime Service"
-             i18n-name-key="worktime-components-worktime-service.name"
-             class="com.businesshelpers.worktime.service.WorktimeServiceImpl" public="true">
+  <component key="WorktimeService" name="Worktime Service" i18n-name-key="worktime-components-worktime-service.name" class="com.businesshelpers.worktime.service.WorktimeServiceImpl" public="true">
     <description key="worktime-components-worktime-service.description"/>
     <interface>com.businesshelpers.worktime.service.WorktimeService</interface>
   </component>
-
+  <webwork1 key="worktime-report" name="WorktimeReport" i18n-name-key="worktime-report.name">
+    <description key="worktime-report.description">The WorktimeReport Plugin</description>
+    <actions>
+      <action name="com.businesshelpers.worktime.jira.webwork.WorktimeReportAction">
+        <action name="com.businesshelpers.worktime.jira.webwork.WorktimeReportAction" alias="WorktimeReport">
+          <view name="success">/templates/worktime-report/report.vm</view>
+        </action>
+      </action>
+    </actions>
+  </webwork1>
 </atlassian-plugin>

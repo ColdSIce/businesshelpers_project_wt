@@ -16,10 +16,6 @@
     #end
 #end
 
-<div class="mod-header">
-    <h3>$i18n.getText('worktime-tab-panel.label')</h3>
-</div>
-
 <table class="aui">
     <thead>
     <tr>
@@ -46,8 +42,8 @@
             </tr>
         #end
         <tr>
-            <td headers="name">$i18n.getText('worktime-tab-panel.table.total')</td>
-            <td headers="time">#formatTime($total)</td>
+            <td headers="name"><strong>$i18n.getText('worktime-tab-panel.table.total')</strong></td>
+            <td headers="time"><strong>#formatTime($total)</strong></td>
         </tr>
     </tbody>
 </table>
