@@ -1,0 +1,49 @@
+#macro(formatTime $secs)
+    #if ($secs >= 60)
+        #set ($hours = ($secs - ($secs % 3600)) / 3600)
+        #set ($mins = (($secs % 3600) - (($secs % 3600) % 60)) / 60)
+        #if ($hours > 0)
+            #if ($mins < 10)
+                <span>$hours$i18n.getText('worktime-tab-panel.hours') 0$mins$i18n.getText('worktime-tab-panel.mins')</span>
+            #else
+                <span>$hours$i18n.getText('worktime-tab-panel.hours') $mins$i18n.getText('worktime-tab-panel.mins')</span>
+            #end
+        #else
+            <span>$mins$i18n.getText('worktime-tab-panel.mins')</span>
+        #end
+    #else
+        <span>0$i18n.getText('worktime-tab-panel.mins')</span>
+    #end
+#end
+
+<div class="mod-header">
+    <h3>$i18n.getText('worktime-tab-panel.label')</h3>
+</div>
+
+<table class="aui">
+    <thead>
+    <tr>
+        <th id="name">Name</th>
+        <th id="time">Time</th>
+    </tr>
+    </thead>
+    <tbody>
+        #foreach ($worktime in $worktimes.entrySet())
+            <tr>
+                <td headers="name">
+
+                    <a class="user-hover user-avatar" rel="$worktime.key.getDisplayName()" href="/secure/ViewProfile.jspa?name=$worktime.key.getDisplayName()">
+                        <span class="aui-avatar aui-avatar-xsmall">
+                            <span class="aui-avatar-inner">
+                                <img src="$avatar.getAvatarAbsoluteURL($user, $worktime.key.getDisplayName(), $size)">
+                            </span>
+                        </span>
+                        $worktime.key.getDisplayName()
+                    </a>
+
+                </td>
+                <td headers="time">#formatTime($worktime.value)</td>
+            </tr>
+        #end
+    </tbody>
+</table>
