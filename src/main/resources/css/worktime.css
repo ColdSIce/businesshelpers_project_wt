@@ -1,0 +1,21 @@
+.primary_text{
+    color: #444;
+}
+
+.secondary_text{
+    color: #999;
+}
+
+.hint_text{
+    color: #989898;
+}
+
+.primary{
+    background: #2962FF;
+    color: #fff;
+}
+
+.accent{
+    background: #64FFDA;
+    color: #444;
+}
