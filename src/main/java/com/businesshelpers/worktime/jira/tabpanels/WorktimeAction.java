@@ -6,6 +6,7 @@ import com.atlassian.jira.avatar.AvatarService;
 import com.atlassian.jira.issue.Issue;
 import com.atlassian.jira.plugin.issuetabpanel.AbstractIssueAction;
 import com.atlassian.jira.plugin.issuetabpanel.IssueTabPanelModuleDescriptor;
+import com.atlassian.jira.user.ApplicationUser;
 import com.businesshelpers.worktime.service.WorktimeService;
 
 import java.util.Date;
@@ -34,9 +35,19 @@ public class WorktimeAction extends AbstractIssueAction {
     }
 
     protected void populateVelocityParams(Map map) {
+        Map<ApplicationUser, Long> worktimes = worktimeService.getWorkTime(issue);
         map.put("size", Avatar.Size.SMALL);
         map.put("user", remoteUser);
-        map.put("worktimes", worktimeService.getWorkTime(issue));
+        map.put("worktimes", worktimes);
+        map.put("total", getTotalTime(worktimes));
         map.put("avatar", avatarService);
+    }
+
+    private long getTotalTime(Map<ApplicationUser, Long> worktimes){
+        long sum = 0L;
+        for(Map.Entry<ApplicationUser, Long> entry : worktimes.entrySet()){
+            sum += entry.getValue();
+        }
+        return sum;
     }
 }

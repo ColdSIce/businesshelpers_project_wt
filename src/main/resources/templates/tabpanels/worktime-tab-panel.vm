@@ -23,8 +23,8 @@
 <table class="aui">
     <thead>
     <tr>
-        <th id="name">Name</th>
-        <th id="time">Time</th>
+        <th id="name">$i18n.getText('worktime-tab-panel.table.name')</th>
+        <th id="time">$i18n.getText('worktime-tab-panel.table.time')</th>
     </tr>
     </thead>
     <tbody>
@@ -45,5 +45,9 @@
                 <td headers="time">#formatTime($worktime.value)</td>
             </tr>
         #end
+        <tr>
+            <td headers="name">$i18n.getText('worktime-tab-panel.table.total')</td>
+            <td headers="time">#formatTime($total)</td>
+        </tr>
     </tbody>
 </table>
