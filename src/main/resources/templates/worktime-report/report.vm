@@ -1,0 +1,222 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <title>BusinessHelpers - Time Report</title>
+    <style>
+        .primary_text{
+            color: #444;
+        }
+
+        h1, h2, h3, h4{
+            color: #fff !important;
+        }
+
+        .secondary_text{
+            color: #999;
+        }
+
+        .hint_text{
+            color: #989898;
+        }
+
+        .primary{
+            background: #212121;
+            color: #fff;
+        }
+
+        .accent{
+            background: #03A9F4;
+            color: #fff;
+        }
+
+        .aui-header{
+            background: #212121 !important;
+            border: none;
+        }
+
+        .aui-header a{
+            transition: all .3s ease;
+        }
+
+        .aui-header a:hover, .aui-header a:focus{
+            background: #303030 !important;
+            color: #fff !important;
+            cursor: pointer;
+        }
+
+        .aui-header .active a{
+            background: #303030 !important;
+            color: #fff !important;
+            cursor: pointer;
+        }
+
+        .aui-page-header{
+            background: #303030 !important;
+            color: #fff !important;
+            width: 100% !important;
+        }
+
+        .aui-navgroup-horizontal{
+            background: #303030 !important;
+            color: #fff !important;
+            border:none !important;
+        }
+
+        .aui-navgroup-horizontal .aui-nav > li a, .aui-navgroup-vertical .aui-nav > li > a, .aui-nav-vertical > li > a{
+            background: #303030 !important;
+            color: #fff !important;
+            transition: all .3s ease;
+        }
+
+        .aui-navgroup-horizontal .aui-nav > li a:focus, .aui-navgroup-vertical .aui-nav > li > a:focus, .aui-nav-vertical > li > a:focus, .aui-navgroup-horizontal .aui-nav > li a:hover, .aui-navgroup-vertical .aui-nav > li > a:hover, .aui-nav-vertical > li > a:hover{
+            color: #fff !important;
+            background: #424242 !important;
+            cursor: pointer;
+        }
+
+        .aui-navgroup-horizontal .aui-nav .active a{
+            color: #fff !important;
+            background: #424242 !important;
+            cursor: pointer;
+        }
+
+        .aui-page-focused .aui-page-panel{
+            border: none !important;
+            border-radius: 0px !important;
+        }
+
+        .aui-page-focused .aui-page-header, .aui-page-focused .aui-page-panel, .aui-page-focused #footer .footer-body, .aui-page-fixed .aui-header-inner, .aui-page-fixed .aui-page-header-inner, .aui-page-fixed .aui-navgroup-horizontal .aui-navgroup-inner, .aui-page-fixed .aui-page-panel-inner, .aui-page-fixed #footer .footer-body, .aui-page-hybrid .aui-page-header, .aui-page-hybrid .aui-navgroup-horizontal .aui-navgroup-inner, .aui-page-hybrid .aui-page-panel-inner, .aui-page-hybrid #footer .footer-body{
+            width: 100% !important;
+            background: #424242 !important;
+            color: #fff !important;
+        }
+
+        #footer .footer-body{
+            margin: 0px !important;
+        }
+
+        #footer-logo, html, body{
+            background: #424242 !important;
+        }
+
+        form.aui .long-field {
+            max-width: 90%;
+            border-radius: 0px;
+            outline: none;
+            margin-right: 10px;
+        }
+
+        form.aui legend, form.aui label, form.aui div.description {
+            color: #999;
+        }
+
+        .aui-button, a.aui-button, .aui-button:visited{
+            outline: none;
+            border-radius: 0px;
+            background: #03A9F4;
+            color: #fff;
+            border: none;
+            text-shadow: none;
+            transition: all .3s ease;
+        }
+
+        #jql_filter{
+            border-right: none;
+            border-left: none;
+        }
+
+        #jql_filter:focus{
+            box-shadow: inset 0 -2px 0 0 #03A9F4;
+            border-bottom: #03A9F4;
+        }
+
+        .aui-button:focus, .aui-button:hover, .aui-button-subtle.aui-button:focus, .aui-button-subtle.aui-button:hover{
+            background: #29B6F6;
+            color: #fff;
+            -webkit-box-shadow: 3px 2px 4px 0px rgba(0,0,0,0.8);
+            -moz-box-shadow: 3px 2px 4px 0px rgba(0,0,0,0.8);
+            box-shadow: 3px 2px 4px 0px rgba(0,0,0,0.8);
+        }
+
+        .aui-button:active, .aui-button.active, .aui-header .aui-button-split-more.active, .aui-button-subtle.aui-button:active, .aui-button-subtle.aui-button.active{
+            background: #0288D1;
+            color: #fff;
+            -webkit-box-shadow: inset 2px 1px 3px 0px rgba(70,70,70,0.4);
+            -moz-box-shadow: inset 2px 1px 3px 0px rgba(70,70,70,0.4);
+            box-shadow: inset 2px 1px 3px 0px rgba(70,70,70,0.4);
+        }
+
+        form.aui .field-group, form.aui .group, form.aui .date-select{
+            padding: 1px 0 4px 120px;
+        }
+
+    </style>
+</head>
+<body class="aui-page-focused aui-page-size-large"><!-- For a normal page, omit all 'aui-page-' classes here -->
+<div id="page">
+    <header id="header" role="banner">
+        <nav class="aui-header aui-dropdown2-trigger-group" role="navigation">
+            <div class="aui-header-inner">
+                <div class="aui-header-primary">
+                    <h1 id="logo" class="aui-header-logo"><a href="#" style="padding-top: 8px;"><strong>BusinessHelpers</strong></a></h1>
+                    <ul class="aui-nav">
+                        <li class="active"><a href="#">Time report</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section id="content" role="main">
+        <!--header class="aui-page-header">
+            <div class="aui-page-header-inner">
+                <div class="aui-page-header-main">
+
+                </div>
+            </div>
+        </header-->
+        <nav class="aui-navgroup aui-navgroup-horizontal">
+            <div class="aui-navgroup-inner">
+                <div class="aui-navgroup-primary">
+                    <ul class="aui-nav">
+                        <li><a href="#">Report by filter</a></li>
+                        <li class="active"><a href="#">Custom JQL report</a></li>
+                    </ul>
+                </div>
+                <!--div class="aui-navgroup-secondary">
+                    <ul class="aui-nav">
+                        <li><a href="http://example.com/">Nav item</a></li>
+                    </ul>
+                </div-->
+            </div>
+        </nav>
+
+        <div class="aui-page-panel">
+            <div class="aui-page-panel-inner">
+                <section class="aui-page-panel-content">
+                    <form class="aui">
+                        <fieldset>
+                            <div class="field-group">
+                                <label for="jql_filter">JQL filter</label>
+                                <input class="text long-field" type="text" id="jql_filter" name="jql_filter" title="JQL filter">
+                                <button class="aui-button">Search</button>
+                                <!--div class="error">Error message here</div-->
+                                <div class="description">Long width input</div>
+                            </div>
+                        </fieldset>
+                    </form>
+
+                    <h2>Page content heading</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae diam in arcu ultricies gravida sed sed nisl. Curabitur nibh nulla, semper non pharetra eu, suscipit vitae eros. Donec eget lectus elit. Etiam metus diam, adipiscing convallis blandit sit amet, sollicitudin sit amet felis. Phasellus justo elit, rhoncus sed tincidunt a, auctor sit amet turpis. Praesent turpis lectus, aliquet vitae sollicitudin ac, convallis vitae urna. Donec consectetur lacus a lacus tincidunt at varius felis venenatis. Pellentesque dapibus mattis arcu, a vestibulum lacus congue at.</p>
+                </section>
+            </div>
+        </div>
+    </section>
+    <footer id="footer" role="contentinfo">
+        <section class="footer-body">
+
+        </section>
+    </footer>
+</div>
+</body>
+</html>
